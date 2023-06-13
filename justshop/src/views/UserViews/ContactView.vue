@@ -215,39 +215,9 @@ textarea:hover {
     border: 1px solid black;
 }
 
-/* Employers section */
-.employer {
-    display: flex;
-    gap: 2rem;
-    padding-bottom: 2.5rem;
-}
 
-.employer-img {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-}
 
-.employer-img img {
-    max-width: 100%;
-    height: auto;
-}
 
-.employer-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.employer-info h4 {
-    font-weight: 500;
-    font-size: 2rem;
-}
-
-.employer-info p {
-    padding: 0;
-    font-size: 1.5rem;
-}
 
 @media (max-width: 799px) {
     form {

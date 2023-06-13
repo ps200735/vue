@@ -91,7 +91,7 @@ export default {
     methods: {
         getProducts() {
             this.loaded = false;
-            axios.get('http://localhost:8001/api/products?page=' + this.page    ,
+            axios.get('http://localhost:8000/api/products?page=' + this.page    ,
                 {
                     headers: {
                         "Access-Control-Allow-Origin": "*",

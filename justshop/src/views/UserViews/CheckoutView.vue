@@ -195,10 +195,7 @@ export default {
 </script>
 
 <style scoped>
-.coupon {
-    display: flex;
-    gap: 15px;
-}
+
 
 .billing-info {
     display: flex;
@@ -207,16 +204,7 @@ export default {
     margin-top: 15px;
 }
 
-.billing-info h4 {
-    margin-bottom: 15px;
-}
 
-.form {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
 form input,
 form textarea {

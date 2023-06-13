@@ -63,7 +63,7 @@ export default {
         },
     },
     async created() {
-        let res1 = await axios.get("http://127.0.0.1:8001/api/products");
+        let res1 = await axios.get("http://127.0.0.1:8000/api/products");
         this.product = res1.data.results;
         this.set_products(this.product);
         console.log(this.$store.state.products[0].name);

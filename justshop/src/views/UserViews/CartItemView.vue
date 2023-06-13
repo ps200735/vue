@@ -117,7 +117,7 @@ export default {
     },
     async created() {
         let res = await axios.get(
-            `http://127.0.0.1:8001/api/products/${this.$route.params.id}`
+            `http://127.0.0.1:8000/api/products/${this.$route.params.id}`
         );
         this.product = res.data;
         this.loaded = true;
@@ -212,10 +212,7 @@ export default {
     cursor: pointer;
 }
 
-.extra {
-    padding-block: 4.5rem;
-    text-align: center;
-}
+
 
 .product-description {
     line-height: 2.5rem;
