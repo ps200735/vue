@@ -84,9 +84,6 @@
                     <button-preloader v-if="userLoggedIn" />
                     <span v-else>Login</span>
                 </action-button>
-                <router-link class="link" to="/forgot-password"
-                    >Forgot Password?</router-link
-                >
             </form>
             <p>Don't have an account?</p>
             <router-link class="link" to="/signup">Sign Up</router-link>
@@ -123,7 +120,7 @@ export default {
             this.userLoggedIn = true;
             await axios({
                 method: "post",
-                url: "https://gorana.onrender.com/users/login/",
+                url: "http://127.0.0.1:8001/api/login",
                 data: {
                     email: this.email,
                     password: this.password,
@@ -133,8 +130,10 @@ export default {
                     if (res.status == 200) {
                         this.set_user(res.data);
                         
+                        this.$router.back();
                         this.userLoggedIn = false;
-                        this.$router.push("/");
+                      //  this.$router.push("/");
+                        console.log(res.data);
                     } else {
                         throw res;
                     }
@@ -143,6 +142,8 @@ export default {
                     this.userLoggedIn = false;
                     this.loginError = err.response.data.non_field_errors;
                 });
+
+                
         },
     },
 };

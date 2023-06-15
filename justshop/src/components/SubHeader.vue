@@ -1,7 +1,6 @@
 <template>
   <div class="sub-heading">
     <h2>{{ heading }}</h2>
-    <p>{{ subHeading }}</p>
   </div>
 </template>
 
@@ -10,7 +9,6 @@ export default {
   name: "SubHeader",
   props: {
     heading: String,
-    subHeading: String,
   },
 };
 </script>

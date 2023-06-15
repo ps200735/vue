@@ -28,23 +28,19 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        Your order: #{{ reference }} has been placed
+                        Your order has been placed
                         successfully.
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <paystack
-                        buttonClass="paystack-button"
-                        buttonText="Pay Online"
-                        :publicKey="key"
-                        :email="email"
-                        :amount="amount"
-                        :reference="reference"
-                        :onSuccess="onSuccessfulPayment"
-                        :onCanel="onCancelledPayment"
+
+                    <button
+                        class="paystack-button"
+                        @click="onSuccessfulPayment()"
                     >
-                        Pay N{{ price }}
-                    </paystack>
+                        <span>Continue</span>
+                    </button>
+                    
                 </div>
             </div>
         </div>
@@ -52,21 +48,15 @@
 </template>
 
 <script>
-import paystack from "vue3-paystack";
 import ActionButton from "@/components/ActionButton.vue";
 import { mapActions } from "vuex";
 export default {
-    props: ["reference", "price", "email"],
     components: {
         ActionButton,
-        paystack,
     },
     data() {
         return {
-            key: "pk_test_ec28501e234f6e2d802dc2a156c2511abd2d0527", // Replace with your public key
-            amount: this.price * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
-            ref: this.reference, // Replace with a reference you generated
-            showModal: false,
+            showModal: true,
         };
     },
     methods: {
@@ -74,15 +64,9 @@ export default {
         onSuccessfulPayment: function (response) {
             this.clear_cart();
             this.$router.push("/cart");
-        },
-        onCancelledPayment: function () {
-            this.$router.push("/cart");
-        },
+        }
     },
     emits: ["close-modal"],
-    mounted() {
-        this.showModal = true;
-    },
 };
 </script>
 

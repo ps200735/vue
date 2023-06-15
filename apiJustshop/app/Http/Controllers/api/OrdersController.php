@@ -40,6 +40,11 @@ class OrdersController extends Controller
 
            ]);
         }
+
+        return response()->json([
+            'message' => 'Order created successfully',
+            'order' => $order_data,
+        ], 201);
     }
 
     /**

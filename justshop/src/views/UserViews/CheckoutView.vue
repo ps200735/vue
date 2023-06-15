@@ -2,7 +2,6 @@
     <main-header />
     <sub-header
         heading="Checkout"
-        subHeading="Complete your order by filling the form below"
     />
     <section>
         <div class="container">
@@ -61,7 +60,7 @@
                         <thead>
                             <tr>
                                 <th>Product</th>
-                                <th>Total (NGN)</th>
+                                <th>Total (&euro;)</th>
                             </tr>
                         </thead>
 
@@ -78,16 +77,11 @@
                             </tr>
 
                             <tr class="summary-subtotal">
-                                <td>Subtotal (NGN):</td>
+                                <td>Subtotal (&euro;):</td>
                                 <td>{{ subtotal }}</td>
                             </tr>
-                            <!-- End .summary-subtotal -->
-                            <tr>
-                                <td>Shipping:</td>
-                                <td>Free shipping</td>
-                            </tr>
                             <tr class="summary-total">
-                                <td>Total (NGN):</td>
+                                <td>Total (&euro;):</td>
                                 <td>
                                     {{ subtotal }}
                                 </td>
@@ -110,9 +104,6 @@
     </section>
     <success-modal
         @close-modal="closeModal"
-        :price="price"
-        :email="this.user.email"
-        :reference="referenceMessage"
         v-if="showModal"
     />
     <main-footer />
@@ -135,7 +126,6 @@ export default {
             noOrder: true,
             userState: "",
             userAddress: "",
-            referenceMessage: "",
             price: "",
             showModal: false,
             email: "",
@@ -156,29 +146,35 @@ export default {
     methods: {
         async placeOrder() {
             this.noOrder = false;
+            console.log(this.userState  + " " + this.userAddress   );
             await axios
                 .post(
-                    "https://gorana.onrender.com/orders/",
+                    "http://127.0.0.1:8001/api/orders",
                     {
                         orders: this.cart.map((item) => {
                             return {
-                                product_id: item._id,
+                                products_id: item.id,
                                 quantity: item.quantity,
                                 size: item.size,
                             };
                         }),
                         state: this.userState,
                         address: this.userAddress,
+                        user_id: "1"
+
                     },
                     {
                         headers: {
-                            Authorization: `${this.user.token}`,
+                            Accept: 'application/json',
+                            Authorization: "Bearer " + this.$store.state.user.access_token
                         },
+                        
                     }
+
                 )
                 .then((response) => {
-                    this.referenceMessage = response.data.transaction_reference;
-                    this.price = response.data.price;
+                    // this.referenceMessage = "llsndflksdnflksndf";
+                    // this.price = "s;dlmffls;dmf";
                     this.noOrder = true;
                     this.showModal = true;
                 })
@@ -190,6 +186,7 @@ export default {
         closeModal() {
             this.showModal = false;
         },
+
     },
 };
 </script>

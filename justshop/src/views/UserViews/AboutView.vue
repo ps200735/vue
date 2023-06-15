@@ -1,6 +1,6 @@
 <template>
   <main-header />
-  <sub-header heading="#WhoWeAre" subHeading="Get to know us" />
+  <sub-header heading="#WhoWeAre"/>
   <div class="container">
     <article>
       <img src="@/assets/images/a6.webp" class="about-img" alt="Who we are" />

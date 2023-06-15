@@ -63,7 +63,7 @@ export default {
         },
     },
     async created() {
-        let res1 = await axios.get("http://127.0.0.1:8000/api/products");
+        let res1 = await axios.get("http://127.0.0.1:8001/api/products");
         this.product = res1.data.results;
         this.set_products(this.product);
         console.log(this.$store.state.products[0].name);
@@ -79,7 +79,7 @@ export default {
     align-items: center;
     justify-content: center;
     height: calc(100vh - 65px);
-    background-image: url("@/assets/images/hero4.webp");
+    background-image: url("@/assets/images/hero4.png");
     background-position: 60% 30%;
     background-size: cover;
 }
@@ -118,4 +118,13 @@ export default {
         background-position: 60% 30%;
     }
 }
+
+@media (max-width: 768px) {
+    .hero__section {
+        background-position: 70% 30%;
+        background-size: cover;
+
+    }
+}
+
 </style>

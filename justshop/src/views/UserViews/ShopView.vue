@@ -1,8 +1,7 @@
 <template>
     <main-header />
     <sub-header
-        heading="#stayhome"
-        subHeading="Save more with coupons up to 70% off"
+        heading="#Shop"
     />
     <div class="container">
         <div class="product__container" v-if="loaded">
@@ -91,7 +90,7 @@ export default {
     methods: {
         getProducts() {
             this.loaded = false;
-            axios.get('http://localhost:8000/api/products?page=' + this.page    ,
+            axios.get('http://localhost:8001/api/products?page=' + this.page    ,
                 {
                     headers: {
                         "Access-Control-Allow-Origin": "*",

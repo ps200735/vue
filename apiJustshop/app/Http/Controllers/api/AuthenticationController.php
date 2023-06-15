@@ -15,7 +15,7 @@ class AuthenticationController extends Controller
             'name' => 'required|max:55',
             'phone' => 'required|max:55',
             'email' => 'email|required|unique:users',
-            'password' => 'required|confirmed'
+            'password' => 'required'
         ]);
 
         $validatedData['password'] = bcrypt($request->password);
@@ -42,7 +42,7 @@ class AuthenticationController extends Controller
                 'token_type' => 'Bearer',
                 'user' => auth()->user(),
             ];
-        
+
 
         return response($response);
 

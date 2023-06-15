@@ -17,7 +17,7 @@
             <i v-for="rating in ratings" :key="rating" class="fas fa-star"></i>
         </div>
         <div class="price">
-            <span>{{ formattedPrice }}</span>
+            <span>  &euro;{{ formattedPrice }}</span>
 
             <button
                 class="cart"
@@ -57,7 +57,7 @@ export default {
     computed: {
         formattedPrice() {
          
-            return  '$' +  this.price;
+            return  this.price;
         },
     },
 };

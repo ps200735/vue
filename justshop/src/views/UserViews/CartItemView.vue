@@ -31,7 +31,7 @@
             <div class="product-details">
                 <span>Home / {{ product.brand }}</span>
                 <h4>{{ product.name }}</h4>
-                <h4>{{ formattedPrice }}</h4>
+                <h4> &euro;{{ formattedPrice }}</h4>
                 <select v-model="size">
                     <option disabled>Select Size</option>
                     <option>Medium</option>
@@ -112,12 +112,12 @@ export default {
     computed: {
         ...mapState(["user", "cart"]),
         formattedPrice() {
-            return  " $" + this.product.price;
+            return   this.product.price;
         },
     },
     async created() {
         let res = await axios.get(
-            `http://127.0.0.1:8000/api/products/${this.$route.params.id}`
+            `http://127.0.0.1:8001/api/products/${this.$route.params.id}`
         );
         this.product = res.data;
         this.loaded = true;

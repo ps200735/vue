@@ -44,13 +44,13 @@ const routes = [
     path: "/checkout",
     name: "checkout",
     component: () => import("../views/UserViews/CheckoutView.vue"),
-    // beforeEnter: (to, from, next) => {
-    //   if (store.state.UserViews) {
-    //     next();
-    //   } else {
-    //     next("/login");
-    //   }
-    // }
+    beforeEnter: (to, from, next) => {
+      if (store.state.user) {
+        next();
+      } else {
+        next("/login");
+      }
+    }
   },
   {
     path: '/cart/:id',

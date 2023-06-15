@@ -23,11 +23,11 @@ const store = createStore({
                 if (item) {
                     if (item.size === payload.size) {
                         //if the item's quantity is less than 10 add more
-                        if (item.quantity < 10) {
+                        if (item.quantity < 50) {
                             item.quantity += payload.quantity;
-                        } else if (item.quantity >= 10) {
+                        } else if (item.quantity >= 50) {
                             //if the item is already 10, don't add more
-                            item.quantity = 10;
+                            item.quantity = 50;
                         }
                     } else {
                         //if the item exists but has a different size, add the new item
@@ -94,12 +94,7 @@ const store = createStore({
                 subtotal += item.price * item.quantity;
             });
             return subtotal;
-        },
-        getHash: (state) => {
-            var md5 = require("blueimp-md5/js/md5");
-            var hash = md5(state.user.email);
-            return `https://www.gravatar.com/avatar/` + hash + `?d=mp`;
-        },
+        }
     },
     plugins: [createPersistedState()],
 });

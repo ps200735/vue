@@ -2,7 +2,6 @@
   <main-header />
   <sub-header
     heading="#cart"
-    subHeading="Add your coupon code and save up to 70% on all purchases!"
   />
   <section class="cart-section">
     <div class="container">
@@ -53,7 +52,7 @@
                     v-model="item.quantity"
                     placeholder="QTY"
                     min="1"
-                    max="10"
+                    max="50"
                     @input="updateTotalPrice(item)"
                   />
                 </td>
@@ -75,21 +74,17 @@
               <thead>
                 <tr>
                   <td>Cart Total</td>
-                  <td>NGN {{ subtotal.toFixed(2) }}</td>
+                  <td>&euro; {{ subtotal.toFixed(2) }}</td>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Shipping Fee</td>
-                  <td>Free</td>
-                </tr>
                 <tr>
                   <td>
                     <strong>Total</strong>
                   </td>
                   <td>
                     <strong>
-                      NGN
+                      &euro;
                       {{ subtotal.toFixed(2) }}
                     </strong>
                   </td>

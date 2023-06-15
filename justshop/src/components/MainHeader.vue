@@ -78,12 +78,8 @@
                             @click="showDropDown = !showDropDown"
                             class="nav-profile"
                         >
-                            <img
-                                :src="getHash"
-                                :alt="user.first_name + ' ' + user.last_name"
-                            />
                             <span class="name"
-                                >&#128075; Hi, {{ user.first_name }}!</span
+                                > Hi, {{ user.user.name }}!</span
                             >
 
                             <svg
@@ -105,54 +101,12 @@
                                 v-if="showDropDown"
                                 @mouseleave="showDropDown = !showDropDown"
                             >
-                                <div class="dropdown-profile">
-                                    <span>Signed in as</span>
-                                    <span class="dropdown-name">{{
-                                        user.first_name + " " + user.last_name
-                                    }}</span>
-                                </div>
-                                <router-link
-                                    :to="{ name: 'shop' }"
-                                    class="dropdown-link"
-                                    aria-label="Go to shop"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="1em"
-                                        height="1em"
-                                        fill="currentColor"
-                                        class="bi bi-box-arrow-up-right"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                                        />
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                                        />
-                                    </svg>
-                                    <span>Go to Shop</span>
-                                </router-link>
+                               
                                 <button
                                     @click="logout"
                                     class="dropdown-link"
                                     aria-label="Logout"
                                 >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="1em"
-                                        height="1em"
-                                        fill="currentColor"
-                                        class="bi bi-power dropdown-logout"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path d="M7.5 1v7h1V1h-1z" />
-                                        <path
-                                            d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"
-                                        />
-                                    </svg>
                                     <span>Logout</span>
                                 </button>
                             </div>
@@ -234,7 +188,7 @@ export default {
     },
     computed: {
         ...mapState(["user", "cart"]),
-        ...mapGetters(["getHash"]),
+       
     },
 };
 </script>
